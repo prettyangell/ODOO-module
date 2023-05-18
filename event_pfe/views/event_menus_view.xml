@@ -1,0 +1,7 @@
+<odoo>
+    <menuitem id="evnt_menu_root" name="Event Site">
+        <menuitem id="event_site_first_level_menu" name="Adv">
+            <menuitem id="event_site_menu_action" action="event_site_action" />
+        </menuitem>
+    </menuitem>
+</odoo>
