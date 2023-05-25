@@ -10,23 +10,25 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="action_confirm" type="object" string="Confirm"
-                        attrs="{'invisible':[('state','=','confirmed')]}" />
-                    <button name="action_cancel" type="object" string="Cancel"
-                        attrs="{'invisible':[('state','=','draft')]}" />
-                    <field name="state" widget="statusbar"
-                    />
+                    <button name="action_confirm"
+                            type="object"
+                            string="Confirm"
+                            class="oe_highlight"
+                            attrs="{'invisible':[('state','=','confirmed')]}"/>
+                    <button name="action_draft"
+                            type="object"
+                            string="Cancel"
+                            attrs="{'invisible':[('state','=','draft')]}"/>
+                    <field name="state"
+                           widget="statusbar"/>
                 </header>
                 <sheet>
-
                     <group>
-                        <field name="name" />
-                        <field name="capacity" />
-                        <field name="image" attrs="{'readonly': [('state', '=', 'confirmed')]}" />
-                        <field name="adress" />
-                    </group>
-                    <group>
-                        <field name="state" string="status" />
+                        <field name="name"/>
+                        <field name="capacity"/>
+                        <field name="image"
+                               attrs="{'readonly': [('state', '=', 'confirmed')]}"/>
+                        <field name="address"/>
                     </group>
                     <notebook>
                         <page string="Section de Places">
@@ -39,7 +41,6 @@
                     </notebook>
                 </sheet>
             </form>
-
         </field>
     </record>
     <record id="event_site_tree" model="ir.ui.view">
