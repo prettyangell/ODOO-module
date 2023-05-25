@@ -1,6 +1,6 @@
 {
-    'name': 'Site Event',
-    'depends': ['base'],
+    'name': 'Site_Event',
+    'depends': ['base', 'event'],
     'application': True,
     'data': [
         'security/ir.model.access.csv',

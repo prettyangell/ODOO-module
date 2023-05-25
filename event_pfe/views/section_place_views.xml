@@ -1,0 +1,33 @@
+<odoo>
+    <record id="section_place_ation" model="ir.actions.act_window">
+        <field name="name">Section place</field>
+        <field name="res_model">section.place</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="section_place_tree" model="ir.ui.view">
+        <field name="name">section.place.tree</field>
+        <field name="model">section.place</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="code_section" />
+                <field name="capacity" />
+            </tree>
+
+        </field>
+    </record>
+
+    <record id="section_place_form" model="ir.ui.view">
+        <field name="name">section.place.form</field>
+        <field name="model">section.place</field>
+        <field name="arch" type="xml">
+            <form>
+                <field name="code_section" />
+                <field name="capacity" />
+
+            </form>
+        </field>
+
+    </record>
+
+</odoo>

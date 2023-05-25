@@ -9,14 +9,34 @@
         <field name="model">event.site</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button name="action_confirm" type="object" string="Confirm"
+                        attrs="{'invisible':[('state','=','confirmed')]}" />
+                    <button name="action_cancel" type="object" string="Cancel"
+                        attrs="{'invisible':[('state','=','draft')]}" />
+                    <field name="state" widget="statusbar"
+                    />
+                </header>
                 <sheet>
+
                     <group>
                         <field name="name" />
                         <field name="capacity" />
-                        <field name="image" />
+                        <field name="image" attrs="{'readonly': [('state', '=', 'confirmed')]}" />
                         <field name="adress" />
-
                     </group>
+                    <group>
+                        <field name="state" string="status" />
+                    </group>
+                    <notebook>
+                        <page string="Section de Places">
+                            <field name="section_ids">
+                                <tree>
+                                    <field name="code_section" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
 
@@ -32,4 +52,6 @@
             </tree>
         </field>
     </record>
+
+
 </odoo>
