@@ -17,3 +17,9 @@ class SectionPlace(models.Model):
         "event.site",
         string="site",
         required=True)
+
+    def name_get(self):
+        result = []
+        for rec in self:
+            result.append([rec.id, rec.code_section])
+        return result

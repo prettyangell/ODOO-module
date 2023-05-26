@@ -53,7 +53,18 @@
             </tree>
         </field>
     </record>
+    <record id="view_event_form" model="ir.ui.view">
+        <field name="name">event.view.form.update</field>
+        <field name="model">event.event</field>
+        <field name="inherit_id" ref="event.view_event_form" />
+        <field name="arch" type="xml">
+            <field name="tag_ids" position="after">
+                <field name="event_site_id" />
+            </field>
 
+        </field>
+
+    </record>
 
     <record id="event_type_ticket_view_tree_from_type_section_place" model="ir.ui.view">
         <field name="name">event.ticket.section.place.tree</field>

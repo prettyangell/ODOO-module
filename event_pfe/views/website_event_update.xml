@@ -1,0 +1,25 @@
+<odoo>
+    <data>
+        <template id="website_event_site.registration_template_inherit"
+            inherit_id="website_event.registration_template">
+            <xpath expr="//div[@class='d-flex align-items-center py-2 pl-3 pr-2 border-bottom']"
+                position="after">
+
+                <div class="SVG-Container">
+                    <div class="SVG-Container">
+                        <t
+                            t-raw="&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; version=&quot;1.1&quot; id=&quot;Layer_1&quot; x=&quot;0px&quot; y=&quot;0px&quot; viewBox=&quot;0 0 613.5 516.4&quot; xml:space=&quot;preserve&quot; preserveAspectRatio=&quot;xMidYMid meet&quot;&gt; 
+    &lt;path id=&quot;block231l&quot; class=&quot;mapsvg&quot; d=&quot;M287.9,140.4l-1.5-37.2c-11.9,0.2-23.7,0.4-35.6,0.9l3.8,37.7 C266.2,141.2,277.6,140.7,287.9,140.4z&quot; onclick=&quot;showPopup()&quot; &gt;&lt;/path&gt;
+  &lt;/svg&gt;" />
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="//div[@id='o_wevent_tickets_collapse']" position="attributes">
+                <attribute name="style">display:none;</attribute>
+            </xpath>
+
+        </template>
+
+    </data>
+
+</odoo>
