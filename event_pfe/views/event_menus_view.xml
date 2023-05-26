@@ -4,9 +4,4 @@
             <menuitem id="event_site_menu_action" action="event_site_action" />
         </menuitem>
     </menuitem>
-    <!-- <menuitem name="Events"
-        id="menu_event_site"
-        sequence="30"
-        parent="event.event_main_menu"
-        groups="event.group_event_registration_desk" /> -->
 </odoo>
