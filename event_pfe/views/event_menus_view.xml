@@ -1,5 +1,5 @@
 <odoo>
-    <menuitem id="event_menu_root" name="Event Sites" parent="event.event_main_menu">
+    <menuitem id="event_menu_root" name="Sites d'evenement" parent="event.event_main_menu">
         <menuitem id="event_site_first_level_menu" name="Adv">
             <menuitem id="event_site_menu_action" action="event_site_action" />
         </menuitem>

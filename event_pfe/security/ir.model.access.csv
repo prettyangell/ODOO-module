@@ -1,3 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 event_pfe.access_event_site,access_event_site,event_pfe.model_event_site,base.group_user,1,1,1,1
 event_pfe.access_section_place,access_section_place,event_pfe.model_section_place,base.group_user,1,1,1,1
+event_pfe.access_event_site_public,access_event_site_public,event_pfe.model_event_site,base.group_public,1,0,0,0
+event_pfe.access_section_place_public,access_section_place_public,event_pfe.model_section_place,base.group_public,1,0,0,0

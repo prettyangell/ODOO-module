@@ -1,6 +1,7 @@
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 import base64
+import os
 import xml.etree.ElementTree as ET
 
 STATE_DRAFT = 'draft'
@@ -57,7 +58,6 @@ class SiteEvent(models.Model):
                 rec.section_ids.unlink()
                 image_data = base64.b64decode(rec.image)
                 decoded_string = image_data.decode('utf-8')
-                # print(decoded_string)
                 tree = ET.fromstring(decoded_string)
                 paths = tree.findall(".//{http://www.w3.org/2000/svg}path")
                 for path in paths:
@@ -65,12 +65,20 @@ class SiteEvent(models.Model):
                     print(code)
                     if code:
                         # Create section.place record
-                        self.env['section.place'].create({
+                        section_place = self.env['section.place'].create({
                             'event_site_id': rec.id,
                             'code_section': code,
                             'capacity': 0,
                         })
-                        print("created with success!")
+                        # Set image field of section.place
+                        image_filename = code.replace("secp", '') + '.jpg'
+                        image_path = '/home/yousra/Projects/odoo/pfe/event_pfe/static/img/Stadiumpics/' + image_filename
+                    
+
+                        if os.path.exists(image_path):
+                            with open(image_path, 'rb') as image_file:
+                                section_place.image = base64.b64encode(
+                                    image_file.read())
 
     @api.onchange("state")
     def _check_state(self):
@@ -85,3 +93,9 @@ class SiteEvent(models.Model):
     def action_draft(self):
         for rec in self:
             rec.state = STATE_DRAFT
+
+    def website_get_svg(self):
+        image_data = base64.b64decode(self.image)
+        decoded_string = image_data.decode('utf-8')
+        return decoded_string
+

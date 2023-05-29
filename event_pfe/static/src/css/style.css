@@ -1,0 +1,117 @@
+
+body {
+    background-color: black;
+}
+
+.mapsvg {
+    fill: rgb(213, 213, 213);
+    stroke-width: 1.13787px;
+}
+#registration_form {
+    background-color: pink !important;
+    /* Add more custom styles as needed */
+}
+.st0 {
+    fill: #999999;
+}
+
+.st1 {
+    enable-background: new;
+}
+
+svg {
+    transform: scale(1);
+    height: 700px;
+    width: 900px;
+}
+
+path:hover {
+    stroke: rgb(76, 76, 76);
+}
+
+.SVG-Container {
+    height: 700px;
+    width: 900px;
+    border: 10px;
+    border-radius: 50px;
+    background-color: rgb(239, 236, 236);
+    float: right;
+    position: static;
+    margin-top: 15px;
+}
+
+.popup {
+    position: absolute;
+    top: 50px;
+    left: -300px;
+    /* Initially hide the popup bar outside the page */
+    width: 200px;
+    height: 100%;
+    background-color: #fff;
+    border: 1px solid #000;
+    /* padding: 20px;*/
+    transition: all 0.5s ease-in-out;
+    display: inline;
+}
+
+.popup.active {
+    left: 0;
+    /* Move the popup bar to the left when it's active */
+}
+    body {
+    background-color: black;
+        }
+
+.mapsvg {
+    fill: rgb(213, 213, 213);
+    stroke-width: 1.13787px;
+}
+
+.st0 {
+    fill: #999999;
+}
+
+.st1 {
+    enable-background: new;
+}
+
+svg {
+    transform: scale(1);
+    height: 700px;
+    width: 900px;
+}
+
+path:hover {
+    stroke: rgb(76, 76, 76);
+}
+
+.SVG-Container {
+    height: 700px;
+    width: 900px;
+    border: 10px;
+    border-radius: 50px;
+    background-color: rgb(239, 236, 236);
+    float: right;
+    position: static;
+    margin-top: 15px;
+}
+
+.popup {
+    position: absolute;
+    top: 50px;
+    left: -300px;
+    /* Initially hide the popup bar outside the page */
+    width: 200px;
+    height: 100%;
+    background-color: #fff;
+    border: 1px solid #000;
+    /* padding: 20px;*/
+    transition: all 0.5s ease-in-out;
+    display: inline;
+}
+
+.popup.active {
+    left: 0;
+    /* Move the popup bar to the left when it's active */
+
+}

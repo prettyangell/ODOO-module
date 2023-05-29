@@ -9,5 +9,10 @@
         'views/event_menus_view.xml',
         'views/website_event_update.xml',
 
-    ]
+    ],
+    'assets':{
+        'web.assets_frontend':[
+            'event_pfe/static/src/js/index.js',
+        ]
+    }
 }

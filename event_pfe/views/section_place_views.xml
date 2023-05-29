@@ -10,8 +10,8 @@
         <field name="model">section.place</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="code_section" />
-                <field name="capacity" />
+                <field name="code_section" string="Code de section" />
+                <field name="capacity" string="Capacité" />
             </tree>
 
         </field>
@@ -22,8 +22,9 @@
         <field name="model">section.place</field>
         <field name="arch" type="xml">
             <form>
-                <field name="code_section" />
-                <field name="capacity" />
+                <field name="code_section" string="Code de section" />
+                <field name="capacity" string="Capacité" />
+                <field name="image" />
 
             </form>
         </field>
