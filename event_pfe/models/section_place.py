@@ -13,7 +13,6 @@ class SectionPlace(models.Model):
         required=True)
     image = fields.Binary(
         string="images",
-        required=True,
         readonly=True)
     event_site_id = fields.Many2one(
         "event.site",

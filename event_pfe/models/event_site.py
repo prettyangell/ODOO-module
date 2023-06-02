@@ -15,7 +15,6 @@ STATES = [
 class SiteEvent(models.Model):
     _name = "event.site"
     _description = _("handling event sites")
-
     name = fields.Char(
         string=_("Name"),
         required=True
