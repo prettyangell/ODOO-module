@@ -6,18 +6,12 @@ const popup = document.querySelectorAll(".popup")[0];
 
 function get_path_element_code(pathElement) {
   const codeAttribute = pathElement.getAttribute("code");
-  if (!codeAttribute) {
-    throw new Error('Missing code attribute! ');
-  }
   return codeAttribute;
 }
 
 function get_ticket_item_from_path_element(pathElement) {
   const code = get_path_element_code(pathElement);
   const ticket_item = document.getElementById(code);
-  if (!ticket_item) {
-    throw new Error('Corresponding ticket item not found !');
-  }
   return ticket_item
 }
 
