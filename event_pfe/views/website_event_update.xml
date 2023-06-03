@@ -8,21 +8,26 @@
         </template>
         <template id="event_pfe.registration_template_inherit"
             inherit_id="website_event.registration_template">
-            <!-- <xpath expr="//span[@class='py-2 o_wevent_registration_title text-left']"
+            <xpath expr="//span[@class='py-2 o_wevent_registration_title text-left']"
                 position="attributes">
                 <attribute name="style">display:none;</attribute>
 
-            </xpath> -->
+            </xpath>
             <xpath
                 expr="//div[@class='d-flex align-items-center py-2 pl-3 pr-2 border-bottom']">
                 <t t-call="event_pfe.svg_map"></t>
             </xpath>
-            <!-- <xpath expr="//div[@id='o_wevent_tickets_collapse']" position="attributes">
+            <xpath
+                expr="//div[@class='d-flex align-items-center py-2 pl-3 pr-2 border-bottom']"
+                position="attributes">
+                <attribute name="class">d-flex align-items-center border-bottom</attribute>
+            </xpath>
+            <xpath expr="//div[@id='o_wevent_tickets_collapse']" position="attributes">
                 <attribute name="style">display:none;</attribute>
             </xpath>
             <xpath expr="//div[@class='row p-2 pl-3']" position="attributes">
                 <attribute name="style">display:none</attribute>
-            </xpath> -->
+            </xpath>
             <xpath expr="//div[@class='row p-2 pl-3']" position="after">
 
                 <t t-call="event_pfe.svg_map" />
@@ -31,70 +36,78 @@
             </xpath>
         </template>
         <template id="svg_map">
+            <div class="everything-container">
+                <div class="svg-popup-container">
+                    <div class="popup_holder">
+                        <div class="popup">
+                            <div class="ticket_list">
+                                <div t-foreach="tickets" t-as="ticket" class="ticket_item_iterator">
+                                    <t t-set="code" t-value="ticket.section_id.code_section"></t>
+                                    <t t-set="section" t-value="ticket.section_id" />
+                                    <div t-att-id="code" class="ticket_item">
+                                        <div class="ticket-header">
+                                            <h2>Ticket Details</h2>
+                                            <button class="close-btn">&#215;</button>
+                                        </div>
 
-            <t t-set="svg" t-value="event.event_site_id.website_get_svg()"></t>
-            <div style="height:100%;width:90%;" class="stadium-container">
-                <t t-raw="svg"></t>
-            </div>
-            <!-- <t t-foreach="tickets" t-as="ticket"> -->
-                
-                <div class="popup">
-                    <div class="ticket_list">
-                        <div t-foreach="tickets" t-as="ticket" class="ticket_item_iterator">
-                            <t t-set="code" t-value="ticket.section_id.code_section"></t>
-                            <t t-set="section" t-value="ticket.section_id" />
-                            <div t-att-id="code" class="ticket_item">
-                                <div class="ticket-header">
-                                    <h2>Ticket Details</h2>
-                                </div>
-                                <button class="close-btn">&#215;</button>
-                                <img t-attf-src="{{image_data_uri(section.image)}}" />
-                                <div class="ticket-info">
-                                    <div class="ticket-item">
-                                        <span class="ticket-label">Date:</span>
-                                        <span class="ticket-value">June 5, 2023</span>
+                                        <img t-attf-src="{{image_data_uri(section.image)}}" />
+                                        <div class="ticket-info">
+                                            <div class="ticket-item">
+                                                <span class="ticket-label">Date:</span>
+                                                <span class="ticket-value">June 5, 2023</span>
+                                            </div>
+                                            <div class="ticket-item">
+                                                <span class="ticket-label">Time:</span>
+                                                <span class="ticket-value">8:00 AM</span>
+                                            </div>
+                                            <div class="ticket-item">
+                                                <span class="ticket-label">Price:</span>
+                                                <span class="ticket-value" t-out="ticket.price">50DA</span>
+                                            </div>
+                                            <div class="ticket-item">
+                                                <span class="ticket-label">Available Seats:</span>
+                                                <span class="ticket-value">10</span>
+                                            </div>
+                                        </div>
+                                        <button class="btn"></button>
+                                        <div class="w-auto ml-auto">
+                                            <select
+                                                t-if="not ticket.is_expired and ticket.sale_available"
+                                                t-attf-name="nb_register-#{ticket.id}" id="test"
+                                                class="custom-select">
+                                                <t t-set="seats_max_ticket"
+                                                    t-value="(not ticket.seats_limited or ticket.seats_available &gt; 9) and 10 or ticket.seats_available + 1" />
+                                                <t t-set="seats_max_event"
+                                                    t-value="(not event.seats_limited or event.seats_available &gt; 9) and 10 or event.seats_available + 1" />
+                                                <t t-set="seats_max"
+                                                    t-value="min(seats_max_ticket, seats_max_event)" />
+                                                <t t-foreach="range(0, seats_max)" t-as="nb">
+                                                    <option t-esc="nb"
+                                                        t-att-selected="len(ticket) == 0 and nb == 0 and 'selected'" />
+                                                </t>
+                                            </select>
+                                            <div t-else="" class="text-danger">
+                                                <span
+                                                    t-if="not ticket.sale_available and not ticket.is_expired and ticket.is_launched()">Sold
+                                                    Out</span>
+                                                <span t-if="ticket.is_expired">Expired</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="ticket-item">
-                                        <span class="ticket-label">Time:</span>
-                                        <span class="ticket-value">8:00 AM</span>
-                                    </div>
-                                    <div class="ticket-item">
-                                        <span class="ticket-label">Price:</span>
-                                        <span class="ticket-value" t-out="ticket.price">50DA</span>
-                                    </div>
-                                    <div class="ticket-item">
-                                        <span class="ticket-label">Available Seats:</span>
-                                        <span class="ticket-value">10</span>
-                                    </div>
-                                </div>
-                                <button class="btn"></button>
-                                <div class="w-auto ml-auto">
-                                    <select t-if="not ticket.is_expired and ticket.sale_available"
-                                        t-attf-name="nb_register-#{ticket.id}"
-                                        class="custom-select">
-                                        <t t-set="seats_max_ticket"
-                                            t-value="(not ticket.seats_limited or ticket.seats_available &gt; 9) and 10 or ticket.seats_available + 1" />
-                                        <t t-set="seats_max_event"
-                                            t-value="(not event.seats_limited or event.seats_available &gt; 9) and 10 or event.seats_available + 1" />
-                                        <t t-set="seats_max" t-value="min(seats_max_ticket, seats_max_event)" />
-                                        <t t-foreach="range(0, seats_max)" t-as="nb">
-                                            <option t-esc="nb"
-                                                t-att-selected="len(ticket) == 0 and nb == 0 and 'selected'" />
-                                        </t>
-                                    </select>
-                                    <div t-else="" class="text-danger">
-                                        <span
-                                            t-if="not ticket.sale_available and not ticket.is_expired and ticket.is_launched()">Sold
-                                            Out</span>
-                                        <span t-if="ticket.is_expired">Expired</span>
-                                    </div>
+
                                 </div>
                             </div>
-                            
+
+
                         </div>
+                        <button id="main_registration">Register</button>
+                    </div>
+                    <t t-set="svg" t-value="event.event_site_id.website_get_svg()"></t>
+                    <div style="height:100%;width:90%;" class="stadium-container">
+                        <t t-raw="svg"></t>
                     </div>
                 </div>
-            <!-- </t> -->
+            </div>
         </template>
 
     </data>
