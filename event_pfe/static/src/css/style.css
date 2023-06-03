@@ -19,20 +19,33 @@ body {
 
   .stadium-container {
   position: relative;
+  padding-left: 400px;
   }
 
   .popup {
-    display: none;
+    display: block;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
+    width:400px;
+    height: 808px;
+    left: 0;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-out;
+    background-color: #ebebeb;
+    align-content: center;
+    text-align: center;
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
     padding: 20px;
+    text-align: center;
+    /* padding: 20px; */
     /* Other popup styles */
   }
   
-  .close-btn {
+  .show {
+    transform: translateX(0%);
+  }
+  
+  /* .close-btn {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -42,10 +55,10 @@ body {
     border: none;
     outline: none;
   }
-  
-  .close-btn:hover {
+   */
+  /* .close-btn:hover {
     color: red;
-  }
+  } */
 
   .btn {
   background-color: #007bff;
@@ -61,3 +74,82 @@ body {
   .btn:hover {
   background-color: #0056b3;
   }
+
+  .container{
+    padding-top: 2px;
+    max-width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 0px;
+    padding-right:0px
+  }
+
+  .ticket-header {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.ticket-header h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: #999;
+    margin:3px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+    max-height: 300px;
+    width: 360px;
+    margin-bottom: 20px;
+}
+
+.ticket-info {
+    margin-bottom: 20px;
+}
+
+.ticket-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.ticket-label {
+    flex: 1;
+    text-align: right;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.ticket-value {
+    flex: 1;
+    text-align: left;
+}
+
+.btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}

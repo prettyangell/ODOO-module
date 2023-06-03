@@ -13,6 +13,7 @@
     'assets':{
         'web.assets_frontend':[
             'event_pfe/static/src/js/index.js',
+            'event_pfe/static/src/css/style.css'
         ]
     }
 }
