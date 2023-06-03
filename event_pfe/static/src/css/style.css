@@ -153,3 +153,18 @@ img {
 .btn:hover {
     background-color: #45a049;
 }
+
+
+/* ticket list handling */
+.ticket_list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ticket_item_iterator {
+  display: none;
+}
+
+/* ticket item card styles */
+/* .ticket_item {} */

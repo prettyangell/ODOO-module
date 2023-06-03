@@ -36,57 +36,65 @@
             <div style="height:100%;width:90%;" class="stadium-container">
                 <t t-raw="svg"></t>
             </div>
-            <t t-foreach="tickets" t-as="ticket">
-                <t t-set="code" t-value="ticket.section_id.code_section"></t>
-                <t t-set="section" t-value="ticket.section_id" />
-                <div t-att-id="code" class="popup">
-                    <div class="ticket-header">
-                        <h2>Ticket Details</h2>
-                    </div>
-                    <button class="close-btn">&#215;</button>
-                    <img t-attf-src="{{image_data_uri(section.image)}}" />
-                    <div class="ticket-info">
-                        <div class="ticket-item">
-                            <span class="ticket-label">Date:</span>
-                            <span class="ticket-value">June 5, 2023</span>
-                        </div>
-                        <div class="ticket-item">
-                            <span class="ticket-label">Time:</span>
-                            <span class="ticket-value">8:00 AM</span>
-                        </div>
-                        <div class="ticket-item">
-                            <span class="ticket-label">Price:</span>
-                            <span class="ticket-value" t-out="ticket.price">50DA</span>
-                        </div>
-                        <div class="ticket-item">
-                            <span class="ticket-label">Available Seats:</span>
-                            <span class="ticket-value">10</span>
-                        </div>
-                    </div>
-                    <button class="btn"></button>
-                    <div class="w-auto ml-auto">
-                        <select t-if="not ticket.is_expired and ticket.sale_available"
-                            t-attf-name="nb_register-#{ticket.id}"
-                            class="custom-select">
-                            <t t-set="seats_max_ticket"
-                                t-value="(not ticket.seats_limited or ticket.seats_available &gt; 9) and 10 or ticket.seats_available + 1" />
-                            <t t-set="seats_max_event"
-                                t-value="(not event.seats_limited or event.seats_available &gt; 9) and 10 or event.seats_available + 1" />
-                            <t t-set="seats_max" t-value="min(seats_max_ticket, seats_max_event)" />
-                            <t t-foreach="range(0, seats_max)" t-as="nb">
-                                <option t-esc="nb"
-                                    t-att-selected="len(ticket) == 0 and nb == 0 and 'selected'" />
-                            </t>
-                        </select>
-                        <div t-else="" class="text-danger">
-                            <span
-                                t-if="not ticket.sale_available and not ticket.is_expired and ticket.is_launched()">Sold
-                                Out</span>
-                            <span t-if="ticket.is_expired">Expired</span>
+            <!-- <t t-foreach="tickets" t-as="ticket"> -->
+                
+                <div class="popup">
+                    <div class="ticket_list">
+                        <div t-foreach="tickets" t-as="ticket" class="ticket_item_iterator">
+                            <t t-set="code" t-value="ticket.section_id.code_section"></t>
+                            <t t-set="section" t-value="ticket.section_id" />
+                            <div t-att-id="code" class="ticket_item">
+                                <div class="ticket-header">
+                                    <h2>Ticket Details</h2>
+                                </div>
+                                <button class="close-btn">&#215;</button>
+                                <img t-attf-src="{{image_data_uri(section.image)}}" />
+                                <div class="ticket-info">
+                                    <div class="ticket-item">
+                                        <span class="ticket-label">Date:</span>
+                                        <span class="ticket-value">June 5, 2023</span>
+                                    </div>
+                                    <div class="ticket-item">
+                                        <span class="ticket-label">Time:</span>
+                                        <span class="ticket-value">8:00 AM</span>
+                                    </div>
+                                    <div class="ticket-item">
+                                        <span class="ticket-label">Price:</span>
+                                        <span class="ticket-value" t-out="ticket.price">50DA</span>
+                                    </div>
+                                    <div class="ticket-item">
+                                        <span class="ticket-label">Available Seats:</span>
+                                        <span class="ticket-value">10</span>
+                                    </div>
+                                </div>
+                                <button class="btn"></button>
+                                <div class="w-auto ml-auto">
+                                    <select t-if="not ticket.is_expired and ticket.sale_available"
+                                        t-attf-name="nb_register-#{ticket.id}"
+                                        class="custom-select">
+                                        <t t-set="seats_max_ticket"
+                                            t-value="(not ticket.seats_limited or ticket.seats_available &gt; 9) and 10 or ticket.seats_available + 1" />
+                                        <t t-set="seats_max_event"
+                                            t-value="(not event.seats_limited or event.seats_available &gt; 9) and 10 or event.seats_available + 1" />
+                                        <t t-set="seats_max" t-value="min(seats_max_ticket, seats_max_event)" />
+                                        <t t-foreach="range(0, seats_max)" t-as="nb">
+                                            <option t-esc="nb"
+                                                t-att-selected="len(ticket) == 0 and nb == 0 and 'selected'" />
+                                        </t>
+                                    </select>
+                                    <div t-else="" class="text-danger">
+                                        <span
+                                            t-if="not ticket.sale_available and not ticket.is_expired and ticket.is_launched()">Sold
+                                            Out</span>
+                                        <span t-if="ticket.is_expired">Expired</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
-            </t>
+            <!-- </t> -->
         </template>
 
     </data>
