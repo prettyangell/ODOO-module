@@ -1,5 +1,4 @@
-# ODOO Module
-# Event Website with Interactive Event Site Map
+# ODOO Module: Event Website with Interactive Event Site Map
 
 ## Overview
 
