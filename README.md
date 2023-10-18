@@ -5,7 +5,7 @@
 
 This is a custom module developed for the Odoo platform to enhance event management. The module allows administrators to create event websites with interactive event site maps. Users can easily navigate and interact with the event site map, view section details, and reserve tickets for specific sections.
 
-![Interactive Event Site Map](link-to-your-image.png)
+
 
 ## Features
 
@@ -30,19 +30,22 @@ This is a custom module developed for the Odoo platform to enhance event managem
 
 Utilizing this module is straightforward and enhances event management in Odoo. Follow these steps to leverage its capabilities:
 
-1.Create an Event:
+### 1.Create an Event:
 
 Access the Events module within Odoo.
 Create a new event and input essential event details.
-2. Add an Interactive Event Site Map:
+
+### 2. Add an Interactive Event Site Map:
 
 In the administrator section, select the event you wish to enhance.
 Upload an interactive SVG map of the event site.
 Define individual sections on the map, specifying their capacity, code, and images for reference.
-3.Publish the Event Website:
+
+### 3.Publish the Event Website:
 
 As soon as the interactive map is uploaded, it will automatically be displayed on the event website for public access.
-User Interaction:
+
+### 4.User Interaction:
 
 Website visitors can explore the interactive map.
 By clicking on specific sections, they can access detailed information and reserve tickets (that you provided in the administrator side) directly.
